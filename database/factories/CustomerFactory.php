@@ -1,0 +1,16 @@
+<?php
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+
+use App\Customer;
+use Faker\Generator as Faker;
+
+$factory->define(Customer::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'email' => $faker->unique()->safeEmail,
+        'firebase_uid' => $faker->asciify('********************'),
+        'phone_number' => $faker->e164PhoneNumber,
+        'date_of_birth' => $faker->date($format = 'Y-m-d', $max = 'now'),
+    ];
+});
